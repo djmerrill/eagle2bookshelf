@@ -9,8 +9,8 @@ Specifically this program outputs block component files (.blocks), netlist files
 These files are sutible for academic IC placement programs.
 
 The current version does not account for pin placement. All nets are connected to the center of each block.
+
 The current does not account for net weights. All weights are set to '1'.
-This program was written by Devon Merrill (devon@ucsd.edu).
 
 ```
 Usage:
