@@ -40,7 +40,7 @@ class Signal(object):
 		self.pins = []
 		self.weight = weight
 
-	def add_pin(self, component_name, x_offset='%50.0', y_offset='%50.0', direction='B'):
+	def add_pin(self, component_name, x_offset='%0.0', y_offset='%0.0', direction='B'):
 		self.pins.append(Pin(component_name, x_offset, y_offset, direction))
 
 		# you have bounding box for element
@@ -48,16 +48,16 @@ class Signal(object):
 		# what we want to do is center the bounding box
 		# 	then center the pin
 		#	then we can get the percent offset from center
-		# x_min = element.x_min
-		# x_max = element.x_max
-		# y_min = element.y_min
-		# y_max = element.y_max
+		x_min = element.x_min
+		x_max = element.x_max
+		y_min = element.y_min
+		y_max = element.y_max
 
-		# x_center = (x_min + x_max) / 2.0
-		# y_center = (y_min + y_max) / 2.0
+		x_center = (x_min + x_max) / 2.0
+		y_center = (y_min + y_max) / 2.0
 
-		# pin_x = pin.get_x()
-		# pin_y = pin.get_y()
+		pin_x = pin.get_x()
+		pin_y = pin.get_y()
 
 
 class ElementEntry(object):
