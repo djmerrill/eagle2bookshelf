@@ -43,6 +43,23 @@ class Signal(object):
 	def add_pin(self, component_name, x_offset='%50.0', y_offset='%50.0', direction='B'):
 		self.pins.append(Pin(component_name, x_offset, y_offset, direction))
 
+		# you have bounding box for element
+		# you have x, y offsets for pin
+		# what we want to do is center the bounding box
+		# 	then center the pin
+		#	then we can get the percent offset from center
+		x_min = element.x_min
+		x_max = element.x_max
+		y_min = element.y_min
+		y_max = element.y_max
+
+		x_center = (x_min + x_max) / 2.0
+		y_center = (y_min + y_max) / 2.0
+
+		pin_x = pin.get_x()
+		pin
+
+
 class ElementEntry(object):
 	def __init__(self, name, library=None, package=None):
 		self.name = name
@@ -82,8 +99,8 @@ class ElementEntry(object):
 			assert False
 
 def run_conversion(
-	user_id = 'Devon Merrill, devon@ucsd.edu',
-	project_name = None,
+	user_id = 'No user ID set',
+	project_name = '.',
 	brd_file = 'unplaced.brd'
 ):
 
