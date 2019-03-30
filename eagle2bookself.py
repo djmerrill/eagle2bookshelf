@@ -4,7 +4,7 @@ This program converts EAGLE board files (.brd) to bookshelf format files.
 Specifically this program outputs block component files (.blocks), netlist files (.nets), and net weight files (.wts).
 These files are sutible for academic IC placement programs.
 
-This version does not account for pin placement. All nets are connected to the center of each block.
+This version DOES account for pin placement. But, this feature is unverified.
 This version does not account for net weights. All weights are set to '1'.
 
 This program was written by Devon Merrill (devon@ucsd.edu).
@@ -40,8 +40,10 @@ class Signal(object):
 		self.pins = []
 		self.weight = weight
 
-	def add_pin(self, component_name, x_offset='%0.0', y_offset='%0.0', direction='B'):
-		self.pins.append(Pin(component_name, x_offset, y_offset, direction))
+	def add_pin(self, element, pin_name, direction='B'):
+		origin_offsets = element.pins[pin_name] # the pin dict stores (x,y) pairs of origin offsets
+		new_pin = Pin(element.name, '%0.0', '%0.0', direction)
+		self.pins.append(new_pin)
 
 		# you have bounding box for element
 		# you have x, y offsets for pin
@@ -56,8 +58,17 @@ class Signal(object):
 		x_center = (x_min + x_max) / 2.0
 		y_center = (y_min + y_max) / 2.0
 
-		pin_x = pin.get_x()
-		pin_y = pin.get_y()
+		pin_x_from_center = origin_offsets[0] - x_center
+		pin_y_from_center = origin_offsets[1] - y_center
+
+		x_percent = pin_x_from_center / (x_max - x_min)
+		y_percent = pin_y_from_center / (y_max - y_min)
+
+		assert x_percent <= 0.5 and x_percent >= -0.5, 'x_percent: ' + str(x_percent)
+		assert y_percent <= 0.5 and y_percent >= -0.5, 'y_percent: ' + str(y_percent)
+
+		new_pin.x_offset = '%' + str(x_percent * 100)
+		new_pin.y_offset = '%' + str(y_percent * 100)
 
 
 class ElementEntry(object):
@@ -70,7 +81,7 @@ class ElementEntry(object):
 		self.y_min = 0.0
 		self.y_max = 0.0
 		self.pins = {}
-		self.bounding_box_multiplier = 1.1
+		self.bounding_box_multiplier = 1.0
 
 	def __str__(self):
 		width = self.x_max - self.x_min
@@ -249,7 +260,9 @@ def run_conversion(
 		c_refs = n.get_contactrefs()
 		for c_ref in c_refs:
 			assert c_ref.get_element() in elements
-			signal.add_pin(component_name=c_ref.get_element())
+			element = elements[c_ref.get_element()]
+			pin_name = c_ref.get_pad()
+			signal.add_pin(element=element, pin_name=pin_name)
 
 	print 'Total: ' + str(len(signals)) + ' nets'
 
