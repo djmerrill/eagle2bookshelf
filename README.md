@@ -1,8 +1,8 @@
 # eagle2bookshelf
 This is a project that converts between EAGLE PCB files to bookshelf fileformat.
 
-# eagle2bookshelf.py
-```
+## eagle2bookshelf.py
+
 This program converts EAGLE board files (.brd) to bookshelf format files.
 
 Specifically this program outputs block component files (.blocks), netlist files (.nets), and net weight files (.wts).
@@ -12,6 +12,7 @@ The current version does not account for pin placement. All nets are connected t
 The current does not account for net weights. All weights are set to '1'.
 This program was written by Devon Merrill (devon@ucsd.edu).
 
+```
 Usage:
   eagle2bookshelf.py -h | --help
   eagle2bookshelf.py --brd <BRD> --output_prfx <STEM_NAME> --userid <USERID>
