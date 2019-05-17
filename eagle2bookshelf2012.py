@@ -97,19 +97,35 @@ class Signal(object):
 		new_pin = PinAbsolute(element.name, 0.0, 0.0, direction)
 		self.pins.append(new_pin)
 
+		if element.name == 'JP9':
+			print 'Adding pin to JP9: ' + pin_name
+
 		x_min = element.x_min
 		x_max = element.x_max
 		y_min = element.y_min
 		y_max = element.y_max
 
+		if element.name == 'JP9':
+			print '\tmin and max: ' + str( ((x_min,x_max),(y_min,y_max)) )
+
 		x_center = (x_min + x_max) / 2.0
 		y_center = (y_min + y_max) / 2.0
+
+		if element.name == 'JP9':
+			print '\tcenter: ' + str((x_center, y_center))
+			print '\torigin offset: ' + str(origin_offsets)
 
 		pin_x_from_center = origin_offsets[0] - x_center
 		pin_y_from_center = origin_offsets[1] - y_center
 
+		if element.name == 'JP9':
+			print '\tfrom center pin location: ' + str((pin_x_from_center,pin_y_from_center))
+
 		new_pin.x_offset = pin_x_from_center
 		new_pin.y_offset = pin_y_from_center
+
+		# new_pin.x_offset = element.pins[pin_name][0]
+		# new_pin.y_offset = element.pins[pin_name][1]
 
 
 class ElementEntry(object):
@@ -121,10 +137,10 @@ class ElementEntry(object):
 		# these are not height and width, these are cartisian coordiants (can be negative)
 		self.x_loc = 0.0
 		self.y_loc = 0.0
-		self.x_min = 0.0
-		self.x_max = 0.0
-		self.y_min = 0.0
-		self.y_max = 0.0
+		self.x_min = 9e99
+		self.x_max = -9e99
+		self.y_min = 9e99
+		self.y_max = -9e99
 		self.pins = {}
 		self.bounding_box_multiplier = 1.0
 
@@ -143,8 +159,11 @@ class ElementEntry(object):
 
 	def node_str(self):
 		"""This is in '.nodes' format"""
+		# print self.name, self.x_loc, self.y_loc
 		width = self.x_max - self.x_min
+		# width = 1#self.x_max - self.x_min
 		height = self.y_max - self.y_min
+		# height = 1#self.y_max - self.y_min
 		node_str = ''
 		node_str += self.name.rjust(20) + ' ' + str(width).rjust(20) + ' ' + str(height).rjust(20)
 		return node_str
@@ -172,15 +191,18 @@ def de_bounding_box(drawing_element):
 	y_min = 9e99
 	y_max = -9e99
 	if isinstance(drawing_element, Swoop.Wire):
-		x_min = min(drawing_element.get_x1(), drawing_element.get_x2()) - drawing_element.get_width()
-		x_max = max(drawing_element.get_x1(), drawing_element.get_x2()) + drawing_element.get_width()
-		y_min = min(drawing_element.get_y1(), drawing_element.get_y2()) - drawing_element.get_width()
-		y_max = max(drawing_element.get_y1(), drawing_element.get_y2()) + drawing_element.get_width()
+		if drawing_element.get_curve():
+			pass
+		else:
+			x_min = min(drawing_element.get_x1(), drawing_element.get_x2()) - drawing_element.get_width()
+			x_max = max(drawing_element.get_x1(), drawing_element.get_x2()) + drawing_element.get_width()
+			y_min = min(drawing_element.get_y1(), drawing_element.get_y2()) - drawing_element.get_width()
+			y_max = max(drawing_element.get_y1(), drawing_element.get_y2()) + drawing_element.get_width()
 	elif isinstance(drawing_element, Swoop.Rectangle):
-		x_min = min(drawing_element.get_x1(), drawing_element.get_x2()) - drawing_element.get_width()
-		x_max = max(drawing_element.get_x1(), drawing_element.get_x2()) + drawing_element.get_width()
-		y_min = min(drawing_element.get_y1(), drawing_element.get_y2()) - drawing_element.get_width()
-		y_max = max(drawing_element.get_y1(), drawing_element.get_y2()) + drawing_element.get_width()
+		x_min = min(drawing_element.get_x1(), drawing_element.get_x2()) # - drawing_element.get_width()
+		x_max = max(drawing_element.get_x1(), drawing_element.get_x2()) # + drawing_element.get_width()
+		y_min = min(drawing_element.get_y1(), drawing_element.get_y2()) # - drawing_element.get_width()
+		y_max = max(drawing_element.get_y1(), drawing_element.get_y2()) # + drawing_element.get_width()
 	elif isinstance(drawing_element, Swoop.Hole):
 		x_min = drawing_element.get_x() - (drawing_element.get_drill()/2.0)
 		x_max = drawing_element.get_x() + (drawing_element.get_drill()/2.0)
@@ -204,20 +226,20 @@ def de_bounding_box(drawing_element):
 			y_min = drawing_element.get_y() - drawing_element.get_dy()
 			y_max = drawing_element.get_y() + drawing_element.get_dy()
 		elif rotation=='R90':
-			y_min = drawing_element.get_x() - drawing_element.get_dy()
-			y_max = drawing_element.get_x() + drawing_element.get_dy()
-			x_min = drawing_element.get_y() - drawing_element.get_dx()
-			x_max = drawing_element.get_y() + drawing_element.get_dx()
+			x_min = drawing_element.get_x() - drawing_element.get_dy()
+			x_max = drawing_element.get_x() + drawing_element.get_dy()
+			y_min = drawing_element.get_y() - drawing_element.get_dx()
+			y_max = drawing_element.get_y() + drawing_element.get_dx()
 		elif rotation=='R180':
-			y_min = drawing_element.get_x() - drawing_element.get_dx()
-			y_max = drawing_element.get_x() + drawing_element.get_dx()
-			x_min = drawing_element.get_y() - drawing_element.get_dy()
-			x_max = drawing_element.get_y() + drawing_element.get_dy()
+			x_min = drawing_element.get_x() - drawing_element.get_dx()
+			x_max = drawing_element.get_x() + drawing_element.get_dx()
+			y_min = drawing_element.get_y() - drawing_element.get_dy()
+			y_max = drawing_element.get_y() + drawing_element.get_dy()
 		elif rotation=='R270':
-			y_min = drawing_element.get_x() - drawing_element.get_dy()
-			y_max = drawing_element.get_x() + drawing_element.get_dy()
-			x_min = drawing_element.get_y() - drawing_element.get_dx()
-			x_max = drawing_element.get_y() + drawing_element.get_dx()
+			x_min = drawing_element.get_x() - drawing_element.get_dy()
+			x_max = drawing_element.get_x() + drawing_element.get_dy()
+			y_min = drawing_element.get_y() - drawing_element.get_dx()
+			y_max = drawing_element.get_y() + drawing_element.get_dx()
 
 	elif isinstance(drawing_element, Swoop.Pad):
 		rotation = drawing_element.get_rot()
@@ -229,16 +251,16 @@ def de_bounding_box(drawing_element):
 			x_max = drawing_element.get_x() + extra
 			y_min = drawing_element.get_y() - extra
 			y_max = drawing_element.get_y() + extra
-		elif rotation: # just flip x and y I think. This part could be wrong
-			y_min = drawing_element.get_x() - extra
-			y_max = drawing_element.get_x() + extra
-			x_min = drawing_element.get_y() - extra
-			x_max = drawing_element.get_y() + extra
+		elif rotation: # do nothing for rotation for now. It only affect "long" pads
+			x_min = drawing_element.get_x() - extra
+			x_max = drawing_element.get_x() + extra
+			y_min = drawing_element.get_y() - extra
+			y_max = drawing_element.get_y() + extra
 
-	assert x_min < 9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
-	assert x_max > -9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
-	assert y_min < 9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
-	assert y_max > -9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
+	# assert x_min < 9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
+	# assert x_max > -9e98, str(dr/awing_element) + str(((x_min, x_max), (y_min, y_max)) )
+	# assert y_min < 9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
+	# assert y_max > -9e98, str(drawing_element) + str(((x_min, x_max), (y_min, y_max)) )
 
 	return ((x_min, x_max), (y_min, y_max))
 
@@ -256,13 +278,14 @@ def run_conversion(
 	for n in (Swoop.From(brd).
 		get_elements()
 	):
-		name = n.get_name()
+		name = n.get_name()			
 		library = n.get_library()
 		package = n.get_package()
 		e = ElementEntry(name, library=library, package=package)
 		e.x_loc = n.get_x()
 		e.y_loc = n.get_y()
 		e.rotation = n.get_rot()
+		e.locked = n.get_locked()
 		elements[name] = e
 
 	print 'total: ' + str(len(elements)) + ' elements (components/blocks/nodes)'
@@ -277,6 +300,7 @@ def run_conversion(
 			e.add_pin(pin)
 
 		drawing = eagle_package.get_drawing_elements()
+
 		for de in drawing + pads + smds:
 			allowed_types = [
 				Swoop.Wire,
@@ -287,18 +311,37 @@ def run_conversion(
 				Swoop.Smd,
 				Swoop.Pad,
 			]
+			allowed_layers = set(
+				(None,1,16,17,18,29,30,31,32,33,34,35,36,151,39,40,41,42,44,45)
+			)
+
+			# if hasattr(de, 'get_layer') and de.get_layer() not in allowed_layers:
+				# continue
+
 			
 			allowed = [isinstance(de, t) for t in allowed_types]
 			if not any(allowed):
 				continue
 
 			((x_min, x_max), (y_min, y_max)) = de_bounding_box(de)
+			
 			e.expand_bb(
 				x_min,
 				x_max,
 				y_min,
 				y_max,
 			)
+
+			if e.name == 'K1':
+				print de
+				print (e.x_min, e.x_max), (e.y_min, e.y_max)
+
+
+			# if n == 'JP9':
+			# 	print de
+			# 	print ((x_min, x_max), (y_min, y_max))
+			# 	print ((e.x_min, e.x_max), (e.y_min, e.y_max))
+			# 	print
 
 
 	# header for nodes file
@@ -316,6 +359,8 @@ def run_conversion(
 	nodes_str = ''
 	for n, e in elements.iteritems():
 		nodes_str += e.node_str() + '\n'
+		if n == 'K1':
+			print e.node_str()
 
 	# get the nets (signals/wires)
 	signals = {}
@@ -329,8 +374,20 @@ def run_conversion(
 		for c_ref in c_refs:
 			assert c_ref.get_element() in elements
 			element = elements[c_ref.get_element()]
+			# if element.name == 'JP9':
+				# print element
+				# print element.package
+				# pin_names = sorted(element.pins.keys())#, key=lambda x: if isinstance(x, number): int(x) else: x)
+
+				# last_pin = (0,0)
+				# for pn in pin_names:
+					# print pn, element.pins[pn]
+					# print (last_pin[0] - element.pins[pn][0], last_pin[1] - element.pins[pn][1])
+					# last_pin = element.pins[pn]
+				# exit(-1)
 			pin_name = c_ref.get_pad()
 			signal.add_pin_absolute(element=element, pin_name=pin_name)
+
 
 	print 'Total: ' + str(len(signals)) + ' nets'
 
@@ -376,15 +433,58 @@ def run_conversion(
 
 	pl_str = ''
 	for n, e in elements.iteritems():
-		pl_str += e.name.rjust(15) + ' ' + str(e.x_loc).rjust(10) + ' ' + str(e.y_loc).rjust(10)
-		if e.rotation is None:
-			pl_str += ' : N\n'
+
+		# if e.name == 'X4':
+			# pl_str += e.name.rjust(15) + ' ' + str(-(e.x_max - e.x_min)/2).rjust(10) + ' ' + str(-(e.y_max-e.y_min)/2).rjust(10)
+		# else:
+
+		ll_x = e.x_loc # default to origin
+		ll_y = e.y_loc # default to origin
+
+		if n == 'K1':
+			print n, e.rotation
+		if (e.rotation is None) or (e.rotation == 'R0'): # N
+			# ll_x = e.x_loc - abs(e.x_min)
+			# ll_y = e.y_loc - abs(e.y_min)
+
+			ll_x = e.x_loc + (e.x_min)
+			ll_y = e.y_loc + (e.y_min)
+			# print e.name, 'loc:', (e.x_loc, e.y_loc),'ll:', (ll_x, ll_y), 'x:', (e.x_min, e.x_max), 'y:', (e.y_min, e.y_max)
 		elif e.rotation == 'R90':
-			pl_str += ' : E\n'
+			ll_x = e.x_loc - (e.y_max)
+			ll_y = e.y_loc + (e.x_min)
+			# print e.name, 'loc:', (e.x_loc, e.y_loc),'ll:', (ll_x, ll_y), 'x:', (e.x_min, e.x_max), 'y:', (e.y_min, e.y_max)
 		elif e.rotation == 'R180':
-			pl_str += ' : S\n'
+			ll_x = e.x_loc - (e.x_max)
+			ll_y = e.y_loc - (e.y_max)
+			# print e.name, 'loc:', (e.x_loc, e.y_loc),'ll:', (ll_x, ll_y), 'x:', (e.x_min, e.x_max), 'y:', (e.y_min, e.y_max)
 		elif e.rotation == 'R270':
-			pl_str += ' : W\n'
+			ll_x = e.x_loc + (e.y_min)
+			ll_y = e.y_loc - (e.x_max)
+			# print e.name, 'loc:', (e.x_loc, e.y_loc),'ll:', (ll_x, ll_y), 'x:', (e.x_min, e.x_max), 'y:', (e.y_min, e.y_max)
+		# else: # this is wrong, but we don't handle other rotations yet
+		# 	pass
+
+		# pl_str += e.name.rjust(15) + ' ' + str(e.x_loc).rjust(10) + ' ' + str(e.y_loc).rjust(10)
+		pl_str += e.name.rjust(15) + ' ' + str(ll_x).rjust(10) + ' ' + str(ll_y).rjust(10) # use ll
+		if e.name == 'K1':
+			print  e.name.rjust(15) + ' ' + str(ll_x).rjust(10) + ' ' + str(ll_y).rjust(10)
+
+		if e.rotation is None:
+			pl_str += ' : N'
+		elif e.rotation == 'R90':
+			pl_str += ' : W' # really, EAGLE does left hand rotation for some reason
+		elif e.rotation == 'R180':
+			pl_str += ' : S'
+		elif e.rotation == 'R270':
+			pl_str += ' : E'
+		else:
+			pl_str += ' : N'
+
+		if e.locked == True:
+			pl_str += ' /FIXED\n'.rjust(12)
+		else:
+			pl_str += '\n'
 
 
 	with open(project_name + '.nodes', 'w') as file:
