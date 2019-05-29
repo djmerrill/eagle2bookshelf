@@ -154,6 +154,12 @@ def update_placements(
 	for n in (Swoop.From(brd).
 		get_elements()
 	):
+
+		try:
+			str(v = n.get_value())
+		except UnicodeEncodeError as e:
+			n.set_value(e.message)
+
 		brd_name = n.get_name()
 
 		if brd_name not in pl_info: # skip if not in pl file
