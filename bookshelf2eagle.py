@@ -156,7 +156,7 @@ def update_placements(
 	):
 
 		try:
-			str(v = n.get_value())
+			str(n.get_value())
 		except UnicodeEncodeError as e:
 			n.set_value(e.message)
 
