@@ -75,7 +75,7 @@ def update_placements(
 
 	brd = Swoop.EagleFile.from_file(brd_file)
 
-	components = read_pl2(pl)
+	components = read_pl2(pl_file)
 
 	# get the elements (components/blocks/nodes)
 	elements = {}
