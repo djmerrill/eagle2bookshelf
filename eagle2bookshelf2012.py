@@ -21,6 +21,9 @@ Usage:
 --userid USERID                Your name and contact.
 """
 
+from __future__ import print_function
+
+
 import datetime
 
 import Swoop
@@ -98,7 +101,7 @@ class Signal(object):
 		self.pins.append(new_pin)
 
 		if element.name == 'JP9':
-			print 'Adding pin to JP9: ' + pin_name
+			print('Adding pin to JP9: ' + pin_name)
 
 		x_min = element.x_min
 		x_max = element.x_max
@@ -106,20 +109,20 @@ class Signal(object):
 		y_max = element.y_max
 
 		if element.name == 'JP9':
-			print '\tmin and max: ' + str( ((x_min,x_max),(y_min,y_max)) )
+			print('\tmin and max: ' + str( ((x_min,x_max),(y_min,y_max)) ))
 
 		x_center = (x_min + x_max) / 2.0
 		y_center = (y_min + y_max) / 2.0
 
 		if element.name == 'JP9':
-			print '\tcenter: ' + str((x_center, y_center))
-			print '\torigin offset: ' + str(origin_offsets)
+			print('\tcenter: ' + str((x_center, y_center)))
+			print('\torigin offset: ' + str(origin_offsets))
 
 		pin_x_from_center = origin_offsets[0] - x_center
 		pin_y_from_center = origin_offsets[1] - y_center
 
 		if element.name == 'JP9':
-			print '\tfrom center pin location: ' + str((pin_x_from_center,pin_y_from_center))
+			print('\tfrom center pin location: ' + str((pin_x_from_center,pin_y_from_center)))
 
 		new_pin.x_offset = pin_x_from_center
 		new_pin.y_offset = pin_y_from_center
@@ -291,7 +294,7 @@ def run_conversion(
 		e.locked = n.get_locked()
 		elements[name] = e
 
-	print 'total: ' + str(len(elements)) + ' elements (components/blocks/nodes)'
+	print('total: ' + str(len(elements)) + ' elements (components/blocks/nodes)')
 
 	# get the bounding box for the elements (from lib?)
 	for n, e in elements.iteritems():
@@ -336,14 +339,13 @@ def run_conversion(
 			)
 
 			if e.name == 'K1':
-				print de
-				print (e.x_min, e.x_max), (e.y_min, e.y_max)
-
+				print(de)
+				print((e.x_min, e.x_max), (e.y_min, e.y_max))
 
 			# if n == 'JP9':
 			# 	print de
-			# 	print ((x_min, x_max), (y_min, y_max))
-			# 	print ((e.x_min, e.x_max), (e.y_min, e.y_max))
+			# 	print((x_min, x_max), (y_min, y_max))
+			# 	print((e.x_min, e.x_max), (e.y_min, e.y_max))
 			# 	print
 
 
@@ -363,7 +365,7 @@ def run_conversion(
 	for n, e in elements.iteritems():
 		nodes_str += e.node_str() + '\n'
 		if n == 'K1':
-			print e.node_str()
+			print(e.node_str())
 
 	# get the nets (signals/wires)
 	signals = {}
@@ -385,14 +387,14 @@ def run_conversion(
 				# last_pin = (0,0)
 				# for pn in pin_names:
 					# print pn, element.pins[pn]
-					# print (last_pin[0] - element.pins[pn][0], last_pin[1] - element.pins[pn][1])
+					# print(last_pin[0] - element.pins[pn][0], last_pin[1] - element.pins[pn][1])
 					# last_pin = element.pins[pn]
 				# exit(-1)
 			pin_name = c_ref.get_pad()
 			signal.add_pin_absolute(element=element, pin_name=pin_name)
 
 
-	print 'Total: ' + str(len(signals)) + ' nets'
+	print('Total: ' + str(len(signals)) + ' nets')
 
 	nets_header = ''
 	nets_header += 'UCLA nets 1.0\n'
@@ -445,7 +447,7 @@ def run_conversion(
 		ll_y = e.y_loc # default to origin
 
 		if n == 'K1':
-			print n, e.rotation
+			print(n, e.rotation)
 		if (e.rotation is None) or (e.rotation == 'R0'): # N
 			# ll_x = e.x_loc - abs(e.x_min)
 			# ll_y = e.y_loc - abs(e.y_min)
@@ -471,7 +473,7 @@ def run_conversion(
 		# pl_str += e.name.rjust(15) + ' ' + str(e.x_loc).rjust(10) + ' ' + str(e.y_loc).rjust(10)
 		pl_str += e.name.rjust(15) + ' ' + str(ll_x).rjust(10) + ' ' + str(ll_y).rjust(10) # use ll
 		if e.name == 'K1':
-			print  e.name.rjust(15) + ' ' + str(ll_x).rjust(10) + ' ' + str(ll_y).rjust(10)
+			print  (e.name.rjust(15) + ' ' + str(ll_x).rjust(10) + ' ' + str(ll_y).rjust(10))
 
 		if e.rotation is None:
 			pl_str += ' : N'

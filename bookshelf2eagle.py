@@ -14,6 +14,8 @@ Usage:
 -o --out OUT_NAME              Name for updated EAGLE file that will be created.
 """
 
+from __future__ import print_function
+
 import datetime
 
 import Swoop
@@ -145,10 +147,6 @@ def update_placements(
 				y_max,
 			)
 
-			if e.name == 'K1':
-				print de
-				print (e.x_min, e.x_max), (e.y_min, e.y_max)
-
 	components = read_pl2(pl_file)
 
 	for n in (Swoop.From(brd).
@@ -158,6 +156,7 @@ def update_placements(
 		try:
 			str(n.get_value())
 		except UnicodeEncodeError as e:
+			print('Value: "' + n.get_value() + '"" replaced with "' + e.message '" because it contained unicode :(')
 			n.set_value(e.message)
 
 		brd_name = n.get_name()
