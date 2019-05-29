@@ -1382,106 +1382,106 @@ design rules under a new name.</description>
         <pass name="Route" refer="Default" active="yes"/>
       </autorouter>
       <elements>
-        <element name="ADCH" library="pinhead" package="1X08" value="" x="72.2376" y="1.1176" locked="yes" smashed="yes">
+        <element name="ADCH" library="pinhead" package="1X08" value="" x="82.55" y="2.54" locked="yes" smashed="yes">
           <attribute name="VALUE" x="72.39" y="-0.635" size="1.27" layer="27"/>
         </element>
-        <element name="ADCL" library="pinhead" package="1X08" value="" x="49.3776" y="1.1176" locked="yes" smashed="yes">
+        <element name="ADCL" library="pinhead" package="1X08" value="" x="59.69" y="2.54" locked="yes" smashed="yes">
           <attribute name="VALUE" x="49.53" y="-0.635" size="1.27" layer="27"/>
         </element>
-        <element name="C10" library="rcl" package="C0805RND" value="100n" x="36.331" y="5.612" smashed="yes"/>
-        <element name="C11" library="rcl" package="C0805RND" value="22p" x="24.139" y="14.756" smashed="yes"/>
-        <element name="C12" library="rcl" package="C0805RND" value="100n" x="24.139" y="19.7344" smashed="yes" rot="R180"/>
-        <element name="C13" library="rcl" package="C0805RND" value="100n" x="19.059" y="14.756" smashed="yes" rot="R180"/>
-        <element name="C14" library="rcl" package="C0805RND" value="100n" x="13.979" y="24.916" smashed="yes"/>
-        <element name="C15" library="rcl" package="C0805RND" value="100n" x="12.963" y="44.728" smashed="yes"/>
-        <element name="C16" library="rcl" package="C0805RND" value="100n" x="17.535" y="44.728" smashed="yes"/>
-        <element name="C17" library="rcl" package="C0805RND" value="100n" x="19.059" y="24.916" smashed="yes"/>
-        <element name="C1" library="rcl" package="C0805RND" value="100n" x="62.493" y="16.915" smashed="yes"/>
-        <element name="C2" library="rcl" package="C0805RND" value="22p" x="36.331" y="8.152" smashed="yes"/>
-        <element name="C3" library="rcl" package="C0805RND" value="22p" x="36.331" y="10.692" smashed="yes"/>
-        <element name="C4" library="rcl" package="C0805RND" value="100n" x="24.139" y="42.696" smashed="yes"/>
-        <element name="C5" library="rcl" package="C0805RND" value="100n" x="13.979" y="17.296" smashed="yes"/>
-        <element name="C6" library="rcl" package="SMC_D" value="100u" x="20.06" y="0.546" smashed="yes" rot="R90"/>
-        <element name="C7" library="rcl" package="SMC_D" value="100u" x="25.648" y="0.546" smashed="yes" rot="R90"/>
-        <element name="C9" library="rcl" package="C0805RND" value="100n" x="62.112" y="35.965" smashed="yes" rot="R180"/>
-        <element name="COMMUNICATION" library="pinhead" package="1X08" value="" x="67.1576" y="49.3776" locked="yes" smashed="yes" rot="R180">
+        <element name="C10" library="rcl" package="C0805RND" value="100n" x="38.608" y="7.112" smashed="yes"/>
+        <element name="C11" library="rcl" package="C0805RND" value="22p" x="26.416" y="16.256" smashed="yes"/>
+        <element name="C12" library="rcl" package="C0805RND" value="100n" x="26.416" y="21.2344" smashed="yes" rot="R180"/>
+        <element name="C13" library="rcl" package="C0805RND" value="100n" x="21.336" y="16.256" smashed="yes" rot="R180"/>
+        <element name="C14" library="rcl" package="C0805RND" value="100n" x="16.256" y="26.416" smashed="yes"/>
+        <element name="C15" library="rcl" package="C0805RND" value="100n" x="15.24" y="46.228" smashed="yes"/>
+        <element name="C16" library="rcl" package="C0805RND" value="100n" x="19.812" y="46.228" smashed="yes"/>
+        <element name="C17" library="rcl" package="C0805RND" value="100n" x="21.336" y="26.416" smashed="yes"/>
+        <element name="C1" library="rcl" package="C0805RND" value="100n" x="64.77" y="18.415" smashed="yes"/>
+        <element name="C2" library="rcl" package="C0805RND" value="22p" x="38.608" y="9.652" smashed="yes"/>
+        <element name="C3" library="rcl" package="C0805RND" value="22p" x="38.608" y="12.192" smashed="yes"/>
+        <element name="C4" library="rcl" package="C0805RND" value="100n" x="26.416" y="44.196" smashed="yes"/>
+        <element name="C5" library="rcl" package="C0805RND" value="100n" x="16.256" y="18.796" smashed="yes"/>
+        <element name="C6" library="rcl" package="SMC_D" value="100u" x="22.86" y="6.096" smashed="yes" rot="R90"/>
+        <element name="C7" library="rcl" package="SMC_D" value="100u" x="28.448" y="6.096" smashed="yes" rot="R90"/>
+        <element name="C9" library="rcl" package="C0805RND" value="100n" x="64.389" y="37.465" smashed="yes" rot="R180"/>
+        <element name="COMMUNICATION" library="pinhead" package="1X08" value="" x="77.47" y="50.8" locked="yes" smashed="yes" rot="R180">
           <attribute name="VALUE" x="87.63" y="53.975" size="1.27" layer="27" rot="R180"/>
         </element>
-        <element name="D1" library="diode" package="SMB" value="" x="14.872" y="4.544" smashed="yes" rot="R90">
+        <element name="D1" library="diode" package="SMB" value="" x="17.272" y="9.144" smashed="yes" rot="R90">
           <attribute name="VALUE" x="13.843" y="11.303" size="1.27" layer="27" rot="R270"/>
         </element>
-        <element name="F1" library="rcl" package="L1812" value="500mA" x="14.438" y="27.08" smashed="yes"/>
-        <element name="IC2" library="atmel-2005" package="TQFP100" value="ATMEGA1280-16AU" x="41.3" y="18.8464" smashed="yes"/>
-        <element name="IC4" library="linear" package="DPACK" value="MC33269D-5.0" x="-1.715" y="12.38" smashed="yes" rot="R270"/>
-        <element name="IC6" library="SmartPrj" package="SSOP28" value="FT232RL" x="12.9848" y="33.9924" smashed="yes"/>
-        <element name="IC7" library="linear" package="SO08" value="LM358D" x="13.996" y="20.0028" smashed="yes" rot="R90"/>
-        <element name="ICSP" library="pinhead" package="2X03" value="ICSP" x="62.2046" y="23.9776" locked="yes" smashed="yes" rot="R90"/>
-        <element name="JP1" library="pinhead" package="2X08" value="" x="92.5576" y="29.0576" locked="yes" smashed="yes" rot="R270">
+        <element name="F1" library="rcl" package="L1812" value="500mA" x="18.288" y="30.48" smashed="yes"/>
+        <element name="IC2" library="atmel-2005" package="TQFP100" value="ATMEGA1280-16AU" x="50.8" y="28.3464" smashed="yes"/>
+        <element name="IC4" library="linear" package="DPACK" value="MC33269D-5.0" x="4.685" y="17.78" smashed="yes" rot="R270"/>
+        <element name="IC6" library="SmartPrj" package="SSOP28" value="FT232RL" x="18.288" y="39.116" smashed="yes"/>
+        <element name="IC7" library="linear" package="SO08" value="LM358D" x="18.796" y="22.606" smashed="yes" rot="R90"/>
+        <element name="ICSP" library="pinhead" package="2X03" value="ICSP" x="64.897" y="27.94" locked="yes" smashed="yes" rot="R90"/>
+        <element name="JP1" library="pinhead" package="2X08" value="" x="95.25" y="39.37" locked="yes" smashed="yes" rot="R270">
           <attribute name="VALUE" x="99.695" y="29.21" size="1.27" layer="27" rot="R90"/>
         </element>
-        <element name="JP2" library="pinhead" package="2X08" value="" x="92.5576" y="8.7376" locked="yes" smashed="yes" rot="R270">
+        <element name="JP2" library="pinhead" package="2X08" value="" x="95.25" y="19.05" locked="yes" smashed="yes" rot="R270">
           <attribute name="VALUE" x="99.695" y="8.89" size="1.27" layer="27" rot="R90"/>
         </element>
-        <element name="JP3" library="pinhead" package="1X01" value="" x="92.5576" y="49.3776" locked="yes" smashed="yes">
+        <element name="JP3" library="pinhead" package="1X01" value="" x="93.98" y="50.8" locked="yes" smashed="yes">
           <attribute name="VALUE" x="92.71" y="47.625" size="1.27" layer="27"/>
         </element>
-        <element name="JP4" library="pinhead" package="1X01" value="" x="95.0976" y="49.3776" locked="yes" smashed="yes">
+        <element name="JP4" library="pinhead" package="1X01" value="" x="96.52" y="50.8" locked="yes" smashed="yes">
           <attribute name="VALUE" x="95.25" y="47.625" size="1.27" layer="27"/>
         </element>
-        <element name="JP5" library="pinhead" package="1X01" value="" x="92.5576" y="6.1976" locked="yes" smashed="yes">
+        <element name="JP5" library="pinhead" package="1X01" value="" x="93.98" y="7.62" locked="yes" smashed="yes">
           <attribute name="VALUE" x="92.71" y="4.445" size="1.27" layer="27"/>
         </element>
-        <element name="JP6" library="pinhead" package="1X01" value="" x="95.0976" y="6.1976" locked="yes" smashed="yes">
+        <element name="JP6" library="pinhead" package="1X01" value="" x="96.52" y="7.62" locked="yes" smashed="yes">
           <attribute name="VALUE" x="95.25" y="4.445" size="1.27" layer="27"/>
         </element>
-        <element name="L" library="led" package="0805RND" value="" x="24.003" y="37.846" smashed="yes" rot="R180">
+        <element name="L" library="led" package="0805RND" value="" x="26.416" y="39.116" smashed="yes" rot="R180">
           <attribute name="VALUE" x="28.956" y="41.656" size="1.27" layer="27" rot="R180"/>
         </element>
-        <element name="POWER" library="pinhead" package="1X06" value="" x="31.5976" y="1.1176" locked="yes" smashed="yes">
+        <element name="POWER" library="pinhead" package="1X06" value="" x="39.37" y="2.54" locked="yes" smashed="yes">
           <attribute name="VALUE" x="31.75" y="-0.635" size="1.27" layer="27"/>
         </element>
-        <element name="PWMH" library="pinhead" package="1X08" value="" x="22.7076" y="49.3776" locked="yes" smashed="yes" rot="R180">
+        <element name="PWMH" library="pinhead" package="1X08" value="" x="33.02" y="50.8" locked="yes" smashed="yes" rot="R180">
           <attribute name="VALUE" x="43.18" y="53.975" size="1.27" layer="27" rot="R180"/>
         </element>
-        <element name="PWML" library="pinhead" package="1X08" value="" x="44.2976" y="49.3776" locked="yes" smashed="yes" rot="R180">
+        <element name="PWML" library="pinhead" package="1X08" value="" x="54.61" y="50.8" locked="yes" smashed="yes" rot="R180">
           <attribute name="VALUE" x="64.77" y="53.975" size="1.27" layer="27" rot="R180"/>
         </element>
-        <element name="PWR" library="led" package="0805RND" value="" x="73.787" y="35.814" smashed="yes" rot="R180">
+        <element name="PWR" library="led" package="0805RND" value="" x="76.2" y="37.084" smashed="yes" rot="R180">
           <attribute name="VALUE" x="73.66" y="38.354" size="1.27" layer="27" rot="R270"/>
         </element>
-        <element name="Q2" library="crystal" package="HC49/S" value="16MHz" x="40.6146" y="7.493" smashed="yes" rot="R270"/>
-        <element name="R10" library="rcl" package="R0805RND" value="10k" x="13.979" y="14.756" smashed="yes" rot="R180"/>
-        <element name="R11" library="SmartPrj" package="RCL_0805RND" value="1K" x="24.003" y="25.146" smashed="yes"/>
-        <element name="R12" library="SmartPrj" package="RCL_0805RND" value="1K" x="24.003" y="22.606" smashed="yes"/>
-        <element name="R1" library="rcl" package="R0805RND" value="1K" x="24.139" y="40.156" smashed="yes" rot="R180"/>
-        <element name="R2" library="rcl" package="R0805RND" value="10k" x="78.495" y="35.584" smashed="yes" rot="R180"/>
-        <element name="R3" library="rcl" package="R0805RND" value="10k" x="78.495" y="38.124" smashed="yes" rot="R180"/>
-        <element name="R5" library="rcl" package="R0805RND" value="10K" x="24.139" y="17.296" smashed="yes"/>
-        <element name="R6" library="rcl" package="R0805RND" value="10k" x="19.059" y="17.296" smashed="yes" rot="R180"/>
-        <element name="R7" library="rcl" package="R0805RND" value="1k" x="24.139" y="35.076" smashed="yes"/>
-        <element name="R8" library="rcl" package="R0805RND" value="1K" x="78.495" y="33.044" smashed="yes" rot="R180"/>
-        <element name="R9" library="rcl" package="R0805RND" value="1k" x="24.139" y="27.456" smashed="yes"/>
-        <element name="RESET-EN" library="jumper" package="SJ" value="" x="28.8798" y="19.0246" smashed="yes" rot="R90">
+        <element name="Q2" library="crystal" package="HC49/S" value="16MHz" x="43.18" y="13.208" smashed="yes" rot="R270"/>
+        <element name="R10" library="rcl" package="R0805RND" value="10k" x="16.256" y="16.256" smashed="yes" rot="R180"/>
+        <element name="R11" library="SmartPrj" package="RCL_0805RND" value="1K" x="26.416" y="26.416" smashed="yes"/>
+        <element name="R12" library="SmartPrj" package="RCL_0805RND" value="1K" x="26.416" y="23.876" smashed="yes"/>
+        <element name="R1" library="rcl" package="R0805RND" value="1K" x="26.416" y="41.656" smashed="yes" rot="R180"/>
+        <element name="R2" library="rcl" package="R0805RND" value="10k" x="80.772" y="37.084" smashed="yes" rot="R180"/>
+        <element name="R3" library="rcl" package="R0805RND" value="10k" x="80.772" y="39.624" smashed="yes" rot="R180"/>
+        <element name="R5" library="rcl" package="R0805RND" value="10K" x="26.416" y="18.796" smashed="yes"/>
+        <element name="R6" library="rcl" package="R0805RND" value="10k" x="21.336" y="18.796" smashed="yes" rot="R180"/>
+        <element name="R7" library="rcl" package="R0805RND" value="1k" x="26.416" y="36.576" smashed="yes"/>
+        <element name="R8" library="rcl" package="R0805RND" value="1K" x="80.772" y="34.544" smashed="yes" rot="R180"/>
+        <element name="R9" library="rcl" package="R0805RND" value="1k" x="26.416" y="28.956" smashed="yes"/>
+        <element name="RESET-EN" library="jumper" package="SJ" value="" x="30.48" y="20.955" smashed="yes" rot="R90">
           <attribute name="VALUE" x="30.48" y="20.5549" size="0.02" layer="27" rot="R270"/>
         </element>
-        <element name="RX" library="led" package="0805RND" value="" x="24.003" y="30.226" smashed="yes" rot="R180">
+        <element name="RX" library="led" package="0805RND" value="" x="26.416" y="31.496" smashed="yes" rot="R180">
           <attribute name="VALUE" x="28.956" y="34.036" size="1.27" layer="27" rot="R180"/>
         </element>
-        <element name="S1" library="switch-omron" package="B3F-10XX" value="" x="70.4088" y="24.7396" smashed="yes" rot="R180">
+        <element name="S1" library="switch-omron" package="B3F-10XX" value="" x="74.168" y="27.94" smashed="yes" rot="R180">
           <attribute name="VALUE" x="77.216" y="33.02" size="1.27" layer="27" ratio="10" rot="R180"/>
         </element>
-        <element name="T1" library="zetex" package="SOT223" value="NDT2955" x="1.813" y="23.832" smashed="yes" rot="R270"/>
-        <element name="TX" library="led" package="0805RND" value="" x="24.003" y="32.766" smashed="yes" rot="R180">
+        <element name="T1" library="zetex" package="SOT223" value="NDT2955" x="7.147" y="27.432" smashed="yes" rot="R270"/>
+        <element name="TX" library="led" package="0805RND" value="" x="26.416" y="34.036" smashed="yes" rot="R180">
           <attribute name="VALUE" x="28.956" y="36.576" size="1.27" layer="27" rot="R180"/>
         </element>
-        <element name="U$1" library="SmartPrj" package="FIDUCIA-MOUNT" value="FIDUCIALMOUNT" x="56.4682" y="38.2818" locked="yes" smashed="yes"/>
-        <element name="U$2" library="SmartPrj" package="FIDUCIA-MOUNT" value="FIDUCIALMOUNT" x="34.2686" y="15.2186" locked="yes" smashed="yes"/>
-        <element name="U$3" library="SmartPrj" package="FIDUCIA-MOUNT" value="FIDUCIALMOUNT" x="17.3776" y="48.3656" smashed="yes"/>
-        <element name="X2" library="powersupply" package="DC-21MM" value="DC21MMX" x="-1.9304" y="0.889" locked="yes" smashed="yes" rot="R270"/>
-        <element name="X3" library="jumper" package="JP4" value="" x="30.3276" y="28.0416" locked="yes" smashed="yes" rot="R90">
+        <element name="U$1" library="SmartPrj" package="FIDUCIA-MOUNT" value="FIDUCIALMOUNT" x="58.9026" y="40.7162" locked="yes" smashed="yes"/>
+        <element name="U$2" library="SmartPrj" package="FIDUCIA-MOUNT" value="FIDUCIALMOUNT" x="36.703" y="17.653" locked="yes" smashed="yes"/>
+        <element name="U$3" library="SmartPrj" package="FIDUCIA-MOUNT" value="FIDUCIALMOUNT" x="19.812" y="50.8" smashed="yes"/>
+        <element name="X2" library="powersupply" package="DC-21MM" value="DC21MMX" x="6.8326" y="4.9276" locked="yes" smashed="yes" rot="R270"/>
+        <element name="X3" library="jumper" package="JP4" value="" x="31.75" y="33.274" locked="yes" smashed="yes" rot="R90">
           <attribute name="VALUE" x="27.686" y="38.354" size="1.27" layer="27" ratio="10" rot="R270"/>
         </element>
-        <element name="X4" library="SmartPrj" package="PN61729" value="" x="-6.594" y="31" locked="yes" smashed="yes" rot="R90">
+        <element name="X4" library="SmartPrj" package="PN61729" value="" x="-0.74" y="38.1" locked="yes" smashed="yes" rot="R90">
           <attribute name="VALUE" x="-5.08" y="30.48" size="1.27" layer="27"/>
         </element>
       </elements>
