@@ -63,7 +63,7 @@ def read_pl2(fname):
 					if '/FIXED' in l[5]:
 						locked = True
 
-				rot2deg = {'N':0,'S':180,'E':90,'W':270}
+				rot2deg = {'N':0,'S':180,'E':270,'W':90}
 				components[pname] = Component(x=newx, y=newy, rotdeg=rot2deg[r], locked=locked)
 
 	return components
