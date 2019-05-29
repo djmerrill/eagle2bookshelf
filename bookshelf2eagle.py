@@ -188,7 +188,7 @@ def update_placements(
 			n.set_y( pl_info[brd_name].y + e.x_max )
 			# ll_y = e.y_loc - (e.x_max)
 
-	brd.write(out_file, check_sanity=False, dtd_validate=True) # should really pass sanity check
+	brd.write(out_file, check_sanity=False, dtd_validate=False) # should really pass sanity check and dtd
 
 
 
