@@ -107,7 +107,7 @@ def update_placements(
 		e.locked = n.get_locked()
 		elements[name] = e
 
-	print 'total: ' + str(len(elements)) + ' elements (components/blocks/nodes)'
+	print('total: ' + str(len(elements)) + ' elements (components/blocks/nodes)')
 
 	# get the bounding box for the elements (from lib?)
 	for n, e in elements.iteritems():
