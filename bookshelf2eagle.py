@@ -156,7 +156,7 @@ def update_placements(
 		try:
 			str(n.get_value())
 		except UnicodeEncodeError as e:
-			print('Value: "' + n.get_value() + '"" replaced with "' + e.message '" because it contained unicode :(')
+			print('Value: "' + n.get_value() + '"" replaced with "' + e.message + '" because it contained unicode :(')
 			n.set_value(e.message)
 
 		brd_name = n.get_name()
