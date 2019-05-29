@@ -19,7 +19,7 @@ import datetime
 import Swoop
 from docopt import docopt
 
-from eagle2bookshelf2012 import ElementEntry, de_bounding_box, 
+from eagle2bookshelf2012 import ElementEntry, de_bounding_box
 
 
 class Component(object):
