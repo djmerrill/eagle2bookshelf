@@ -66,7 +66,11 @@ def read_pl2(fname):
 						locked = True
 
 				rot2deg = {'N':0,'S':180,'E':270,'W':90,'NW':45,'SW':(90+45),'SE':(180+45),'NE':(270+45)}
-				components[pname] = Component(x=newx, y=newy, rotdeg=rot2deg[r], locked=locked)
+
+				if r.startswith('R'): # EAGLE style rotation
+					components[pname] = Component(x=newx, y=newy, rotdeg=r.strip().strip('R'), locked=locked)
+				else: # NSEW style rotation
+					components[pname] = Component(x=newx, y=newy, rotdeg=rot2deg[r], locked=locked)
 
 	return components
 
