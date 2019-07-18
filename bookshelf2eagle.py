@@ -65,7 +65,7 @@ def read_pl2(fname):
 					if '/FIXED' in l[5]:
 						locked = True
 
-				rot2deg = {'N':0,'S':180,'E':270,'W':90}
+				rot2deg = {'N':0,'S':180,'E':270,'W':90,'NW':45,'SW':(90+45),'SE':(180+45),'NE':(270+45)}
 				components[pname] = Component(x=newx, y=newy, rotdeg=rot2deg[r], locked=locked)
 
 	return components
@@ -198,7 +198,7 @@ def update_placements(
 
 
 if __name__ == '__main__':
-	arguments = docopt(__doc__, version='bookshelf2eagle v0.1')
+	arguments = docopt(__doc__, version='bookshelf2eagle v0.2')
 	update_placements(
 		brd_file=str(arguments['--brd']),
 		pl_file=str(arguments['--pl']),
