@@ -1,7 +1,27 @@
 """Eagle2Bookshelf2012.
 
+This program converts EAGLE board files (.brd) to bookshelf (DAC 2012 contest flavor) format files.
 
-##############################################################################
+Specifically this program outputs nodes files (.nodes), netlist files (.nets), and net weight files (.wts).
+These files are sutible for academic IC placement programs.
+This program also outputs a placement file (.pl) from the initial placement in the Eagle file.
+
+This version DOES account for pin placement. But, this feature is unverified.
+This version does not account for net weights. All weights are set to '1'.
+
+This program was written by Devon Merrill (devon@ucsd.edu).
+
+Usage:
+  eagle2bookshelf2012.py -h | --help
+  eagle2bookshelf2012.py --brd <BRD> --output_prfx <STEM_NAME> --userid <USERID>
+
+-h --help                      Show this message.
+-i --brd BRD                   The EAGLE .brd file to convert.
+-o --output_prfx STEM_NAME     The stem name for the new files (file names without suffex). Includes directory.
+--userid USERID                Your name and contact.
+"""
+
+LICENCE = """
 BSD 3-Clause License
 
 Copyright (c) 2015-2018, The Regents of the University of California
@@ -31,28 +51,6 @@ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
 CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
 OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-##############################################################################
-
-This program converts EAGLE board files (.brd) to bookshelf (DAC 2012 contest flavor) format files.
-
-Specifically this program outputs nodes files (.nodes), netlist files (.nets), and net weight files (.wts).
-These files are sutible for academic IC placement programs.
-This program also outputs a placement file (.pl) from the initial placement in the Eagle file.
-
-This version DOES account for pin placement. But, this feature is unverified.
-This version does not account for net weights. All weights are set to '1'.
-
-This program was written by Devon Merrill (devon@ucsd.edu).
-
-Usage:
-  eagle2bookshelf2012.py -h | --help
-  eagle2bookshelf2012.py --brd <BRD> --output_prfx <STEM_NAME> --userid <USERID>
-
--h --help                      Show this message.
--i --brd BRD                   The EAGLE .brd file to convert.
--o --output_prfx STEM_NAME     The stem name for the new files (file names without suffex). Includes directory.
---userid USERID                Your name and contact.
 """
 
 from __future__ import print_function
