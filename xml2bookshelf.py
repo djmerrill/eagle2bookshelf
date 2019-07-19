@@ -201,7 +201,6 @@ def run_conversion(xml_file, project_name):
 
 	pcb_module = root.find('PCBMODULE')
 
-
 	print('Finding instances...')
 	component_insts = pcb_module.findall('INST')
 	instance_map = {}
@@ -272,7 +271,7 @@ def run_conversion(xml_file, project_name):
 
 	nets_str = ''
 	for name, net in net_map.items():
-		nets_str += name + ' : ' + str(len(net.pins))
+		nets_str += 'NetDegree' + ' : ' + str(len(net.pins))
 		nets_str += '\n'
 		for pin in net.pins:
 			inst = pin[0]
